@@ -2,6 +2,7 @@ package ar.utn.ba.ddsi.apiadmi.servicies;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.ColeccionDto;
 import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
+import ar.utn.ba.ddsi.apiadmi.models.entities.Fuente;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IColeccionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +45,16 @@ public class ColeccionesServices implements IColeccionService {
 
     @Override
     public void eliminar(Coleccion coleccion) {
+
+    }
+
+    @Override
+    public void agregarFuenteDeColeccion(Fuente unaFuente, Long idColeccion) {
+
+    }
+
+    @Override
+    public void eliminarFuenteDeColeccion(Fuente unaFuente, Long idColeccion) {
 
     }
 }

@@ -10,7 +10,7 @@ public class Coleccion {
     private String handle;
     private String titulo;
     private String descripcion;
-    private Fuente fuente;
+   // private Fuente fuente;
     private List<InterfaceCondicion> criterioDePertenencia;
     //private List<Hecho> hechos;
 

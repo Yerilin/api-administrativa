@@ -1,15 +1,18 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
 
 import lombok.Data;
-
+import ar.utn.ba.api.models.entities.EnumTipo;
 @Data
 public class Fuente {
 
     //private Long id;          ATRIBUTOS A DISCUTIR
-    //private EnumTipo tipo;
+    private EnumTipo tipo;
+    private String nombre ;
     private String enpoint;
 
-    public Fuente(String fuente){
+    public Fuente(EnumTipo tip, String nom, String fuente){
+        this.tipo= tip;
+        this.nombre = nom;
         this.enpoint=fuente;
     }
 }

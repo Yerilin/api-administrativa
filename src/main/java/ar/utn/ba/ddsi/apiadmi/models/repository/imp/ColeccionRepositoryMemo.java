@@ -4,12 +4,13 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IColeccionRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
 public class ColeccionRepositoryMemo implements IColeccionRepository {
 
-    private List<Coleccion> colecciones;
+    private List<Coleccion> colecciones = new ArrayList<>();
     private Integer numero =0 ;
 
 
