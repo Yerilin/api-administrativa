@@ -13,6 +13,6 @@ public class ColeccionFactory {
         cole.setTitulo(coleccion.getTituloInput());
        // cole.setFuente(IFuentesRepository);
         cole.setDescripcion(coleccion.getDescripcionInput());
-
+        return cole;
     }
 }

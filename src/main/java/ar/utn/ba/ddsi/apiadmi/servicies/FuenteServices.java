@@ -9,11 +9,11 @@ public class FuenteServices implements IFuenteServices{
 
     private IFuentesRepository repoFuentes;
 
-    @Override
-    public void agregarFuenteDeColeccion(Fuente unaFuente, Long idColeccion) {
-        this.repoFuentes.save(unaFuente, idColeccion);
+    /*@Override
+    public void agregarFuenteDeColeccion( idFuente) {
+        this.repoFuentes.save(idFuente);
     }
-
+*/
     @Override
     public void eliminarFuenteDeColeccion(Fuente unaFuente, Long idColeccion) {
         this.repoFuentes.save(unaFuente, idColeccion);

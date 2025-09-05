@@ -12,6 +12,6 @@ public interface IColeccionService {
     public List<ColeccionDto> obtenerColecciones();
     public Coleccion encontrarPorId(Long id);
     public void eliminar(Coleccion coleccion);
-    public void agregarFuenteDeColeccion(Fuente unaFuente, Long idColeccion);
+   // public void agregarFuenteDeColeccion(Fuente unaFuente, Long idColeccion);
     public void eliminarFuenteDeColeccion(Fuente unaFuente, Long idColeccion);
 }
