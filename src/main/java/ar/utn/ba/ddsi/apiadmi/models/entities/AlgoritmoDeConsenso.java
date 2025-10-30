@@ -1,9 +1,15 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
 
-public enum AlgoritmoDeConsenso {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
-    MULTIPLES_MENCIONES,
-    MAYORIA_SIMPLE,
-    ABSOLUTA,
-    NINGUNA
+@Entity
+public class AlgoritmoDeConsenso {
+
+    @Id
+    private Long id;
+
+    @Column
+    private String algoritmo ;
 }

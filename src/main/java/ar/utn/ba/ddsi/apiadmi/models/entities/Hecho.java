@@ -1,4 +1,9 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
+import
+import lombok.Data;
+
+import java.time.LocalDate;
+import java.util.List;
 
 @Data
 public class Hecho {

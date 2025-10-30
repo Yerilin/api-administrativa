@@ -1,4 +1,4 @@
-package ar.utn.ba.ddsi.apiadmi.servicies;
+package ar.utn.ba.ddsi.apiadmi.servicies.interfaces;
 
 import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstado;
 

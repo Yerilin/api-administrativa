@@ -5,7 +5,7 @@ import ar.utn.ba.api.models.entities.EnumTipo;
 @Data
 public class Fuente {
 
-    //private Long id;          ATRIBUTOS A DISCUTIR
+    private Long id;
     private EnumTipo tipo;
     private String nombre ;
     private String enpoint;
