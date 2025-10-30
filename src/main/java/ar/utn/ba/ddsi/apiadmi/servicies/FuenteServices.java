@@ -1,5 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
+import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
 import ar.utn.ba.ddsi.apiadmi.models.entities.Fuente;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IFuentesRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
@@ -21,7 +22,11 @@ public class FuenteServices implements IFuenteServices {
     }
 
     @Override
-    public Object obtenerPorId(Long id) {
-        return 1;
+    public Fuente buscarPorId(Long id) {
+        Fuente fuente = this.repoFuentes.findById(id)
+                .orElseThrow(() -> new RuntimeException("Colección no encontrada"));
+
+        return fuente;
     }
+
 }

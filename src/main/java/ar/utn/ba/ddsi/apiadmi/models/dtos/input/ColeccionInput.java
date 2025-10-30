@@ -9,11 +9,12 @@ import java.util.List;
 @Data
 public class ColeccionInput {
 
-
+    private String handle;
     private String tituloInput;
     private String descripcionInput;
     private List<Long> fuentesInput; // son los ids
     private List<CriterioInput> criteriosInput;
+    private String idAlgoritmoConcenso;
 
 }
 

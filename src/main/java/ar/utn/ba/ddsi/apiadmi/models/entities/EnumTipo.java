@@ -1,4 +1,4 @@
-package ar.utn.ba.api.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities;
 
 public enum EnumTipo {
 

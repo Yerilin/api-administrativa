@@ -6,6 +6,6 @@ public interface IFuenteServices {
 
     //public void agregarFuenteDeColeccion(Fuente unaFuente, Long idColeccion);
     public void eliminarFuenteDeColeccion(Fuente unaFuente, Long idColeccion);
+    public Fuente buscarPorId(Long id);
 
-    Object obtenerPorId(Long id);
 }

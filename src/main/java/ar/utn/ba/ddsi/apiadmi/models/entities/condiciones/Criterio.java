@@ -6,7 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "criterio")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -17,15 +19,6 @@ public abstract class Criterio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Getter/Setter
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
     abstract Boolean cumpleCriterio(Hecho hecho);
+
 }

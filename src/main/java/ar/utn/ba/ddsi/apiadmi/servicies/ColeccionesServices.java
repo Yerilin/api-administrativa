@@ -9,10 +9,12 @@ import ar.utn.ba.ddsi.apiadmi.models.factory.ColeccionFactory;
 import ar.utn.ba.ddsi.apiadmi.models.factory.CriterioFactory;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IColeccionRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IColeccionService;
+import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.ICriterioService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -23,11 +25,13 @@ public class ColeccionesServices implements IColeccionService {
     private IColeccionRepository colecciones;
     private IFuenteServices fuenteService;
     private ColeccionFactory factory;
+    private ICriterioService criterioService;
 
-    public ColeccionesServices(IColeccionRepository repo, IFuenteServices fuente , ColeccionFactory factory) {
+    public ColeccionesServices(IColeccionRepository repo, IFuenteServices fuente, ColeccionFactory factory,ICriterioService criterioS) {
         this.colecciones = repo;
         this.fuenteService = fuente;
         this.factory = factory;
+        this.criterioService= criterioS;
     }
 
 
@@ -48,9 +52,9 @@ public class ColeccionesServices implements IColeccionService {
     @Override
     public void agregar(ColeccionInput coleccion) {
 
-//        List<Fuente> fuentes = coleccion.getFuentesInput().stream()
-//                .map(obj -> fuenteService.obtenerPorId(obj))
-//                .collect(Collectors.toList());
+        List<Fuente> fuentes = coleccion.getFuentesInput().stream()
+                .map(a -> this.fuenteService.buscarPorId(a))
+                .collect(Collectors.toList());
 
         List<Criterio> criterios = coleccion.getCriteriosInput().stream()
                 .map(CriterioFactory::crearCriterio)
@@ -58,14 +62,30 @@ public class ColeccionesServices implements IColeccionService {
 
 
         Coleccion cole = this.factory.crearColeccion(coleccion);
-        cole.setFuente(fuentes);
+        cole.setFuentes(fuentes);
         cole.setCriteriosDePertenencia(criterios);
 
 
         colecciones.save(cole);
     }
 
+    @Override
+    public Coleccion actualizar(ColeccionInput coleccionInput){
 
+        try {
+            Coleccion coleccion = this.colecciones.findById(coleccionInput.getHandle())
+                    .orElseThrow(() -> new RuntimeException("Colección no encontrada"));
+
+            coleccion.setTitulo(coleccionInput.getTituloInput());
+            coleccion.setDescripcion(coleccionInput.getDescripcionInput());
+            coleccionInput.getFuentesInput().stream().forEach(a -> coleccion.addFuente(this.fuenteService.buscarPorId(a)));
+            coleccionInput.getCriteriosInput().stream().forEach(a->coleccion.addCriterio(this.criterioService.buscarPorId(Long.valueOf(a))));
+            this.colecciones.save(coleccion);
+            return coleccion;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public Coleccion encontrarPorId(String id) {
@@ -82,16 +102,4 @@ public class ColeccionesServices implements IColeccionService {
 
 
     }
-
-    @Override
-    public void agregarFuenteDeColeccion(Long idFuente, String idColeccion) {
-
-    }
-
-    @Override
-    public void eliminarFuenteDeColeccion(Long idFuente, Long idColeccion) {
-
-    }
-
-    //Estos ultimos nos lo hago por que falta definir el mapeo
 }

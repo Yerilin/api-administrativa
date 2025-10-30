@@ -19,7 +19,7 @@ public class Coleccion {
     @Column
     private String descripcion;
     @ManyToOne
-    private List <Fuente> fuente;
+    private List <Fuente> fuentes;
     @ManyToMany
     @JoinTable(
             name = "criterio_x_coleccion",
@@ -36,8 +36,15 @@ public class Coleccion {
 
         this.titulo = titulo;
         this.descripcion= descrip;
-        this.fuente= fuentes;
+        this.fuentes= fuentes;
         this.criteriosDePertenencia=criterios;
+    }
+
+    public void addFuente(Fuente fuente){
+        this.fuentes.add(fuente);
+    }
+    public void addCriterio(Criterio criterio){
+        this.criteriosDePertenencia.add(criterio);
     }
 
 }

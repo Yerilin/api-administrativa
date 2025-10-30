@@ -1,11 +1,17 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.Data;
-import ar.utn.ba.api.models.entities.EnumTipo;
 @Data
+@Entity
 public class Fuente {
 
     private Long id;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_fuente")
     private EnumTipo tipo;
     private String nombre ;
     private String enpoint;
