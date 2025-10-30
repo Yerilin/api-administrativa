@@ -12,7 +12,9 @@ public class SolicitudEliminacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id ;
+    @OneToOne
     private Contribuyente contribuyente;
+    @OneToOne
     private Hecho hecho;
     private LocalDate fecha;
     @Enumerated(EnumType.STRING)

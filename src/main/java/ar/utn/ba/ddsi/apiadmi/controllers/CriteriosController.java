@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping ("/criterios")
 public class CriteriosController {
 
-    @PostMapping
+    //@PostMapping
 
-    public CriterioOutput agregar(@RequestBody CriterioInput criterioInput){
+    //public CriterioOutput agregar(@RequestBody CriterioInput criterioInput){
 
-
-    }
+    //}
 }

@@ -7,9 +7,13 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.SolicitudEliminacion;
 import ar.utn.ba.ddsi.apiadmi.models.repository.ISolicitudRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IHechoService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.ISolicitudService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SolicitudesService implements ISolicitudService {
 
+    @Autowired
     private ISolicitudRepository solicitudRepo;
     private IHechoService hechoService;
 

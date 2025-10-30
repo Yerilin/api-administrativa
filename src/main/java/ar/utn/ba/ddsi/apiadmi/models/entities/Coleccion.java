@@ -18,7 +18,12 @@ public class Coleccion {
     private String titulo;
     @Column
     private String descripcion;
-    @ManyToOne
+    @ManyToMany
+    @JoinTable(
+            name = "fuente_x_coleccion",
+            joinColumns = @JoinColumn(name = "id_coleccion"),
+            inverseJoinColumns = @JoinColumn(name = "id_fuente")
+    )
     private List <Fuente> fuentes;
     @ManyToMany
     @JoinTable(
@@ -27,7 +32,7 @@ public class Coleccion {
             inverseJoinColumns = @JoinColumn(name = "id_criterio")
     )
     private List<Criterio> criteriosDePertenencia;
-
+    @OneToMany
     private List<Hecho> hechos;
 
 

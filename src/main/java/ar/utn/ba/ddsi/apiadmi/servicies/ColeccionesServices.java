@@ -8,9 +8,11 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.condiciones.Criterio;
 import ar.utn.ba.ddsi.apiadmi.models.factory.ColeccionFactory;
 import ar.utn.ba.ddsi.apiadmi.models.factory.CriterioFactory;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IColeccionRepository;
+import ar.utn.ba.ddsi.apiadmi.models.repository.ICriteriosRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IColeccionService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.ICriterioService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,18 +23,20 @@ import java.util.stream.Collectors;
 @Service
 public class ColeccionesServices implements IColeccionService {
 
-    // @Autowired
+     @Autowired
     private IColeccionRepository colecciones;
     private IFuenteServices fuenteService;
     private ColeccionFactory factory;
-    private ICriterioService criterioService;
 
-    public ColeccionesServices(IColeccionRepository repo, IFuenteServices fuente, ColeccionFactory factory,ICriterioService criterioS) {
+    private ICriteriosRepository criteriosRepository;
+
+    /*
+    public ColeccionesServices(IColeccionRepository repo, IFuenteServices fuente, ColeccionFactory factory,ICriteriosRepository criterioS) {
         this.colecciones = repo;
         this.fuenteService = fuente;
         this.factory = factory;
-        this.criterioService= criterioS;
-    }
+        this.criteriosRepository= criterioS;
+    }*/
 
 
     public List<ColeccionDto> obtenerColecciones() {
@@ -79,7 +83,7 @@ public class ColeccionesServices implements IColeccionService {
             coleccion.setTitulo(coleccionInput.getTituloInput());
             coleccion.setDescripcion(coleccionInput.getDescripcionInput());
             coleccionInput.getFuentesInput().stream().forEach(a -> coleccion.addFuente(this.fuenteService.buscarPorId(a)));
-            coleccionInput.getCriteriosInput().stream().forEach(a->coleccion.addCriterio(this.criterioService.buscarPorId(Long.valueOf(a))));
+            //coleccionInput.getCriteriosInput().stream().forEach(a->coleccion.addCriterio(this.criterioService.buscarPorId(Long.valueOf(a))));
             this.colecciones.save(coleccion);
             return coleccion;
         } catch (Exception e) {

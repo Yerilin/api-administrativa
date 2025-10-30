@@ -15,13 +15,13 @@ import java.util.List;
 @RequestMapping ("/colecciones")
 public class CollecionController {
 
-//@Autowired
+    @Autowired
     private ColeccionesServices coleccionService;
 
-    private  CollecionController(ColeccionesServices coleccionService){
+    /*private  CollecionController(ColeccionesServices coleccionService){
 
         this.coleccionService= coleccionService;
-    }
+    }*/
 
    @PostMapping
     public void agregarColeccion(@RequestBody ColeccionInput coleccion){
@@ -47,7 +47,7 @@ public class CollecionController {
 
         Coleccion coleccion = coleccionService.actualizar(coleccionInput);
         if(coleccion==null){
-            new Error("No se encontro")
+            new Error("No se encontro");
         }
 
 

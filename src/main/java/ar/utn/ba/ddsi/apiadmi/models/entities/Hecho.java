@@ -12,15 +12,16 @@ public class Hecho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String Titulo;
     private String descripcion;
+    @ManyToOne
     private Categoria categoria;
     private LocalDate fecha;
     private LocalDate fechaDeCarga;
-    private List<Fuente> fuentes;
+    @ManyToOne
+    private Fuente origen;
+    @ManyToOne
     private Ubicacion lugarDeOcurrencia;
-    private Fuente fuenteOrigen;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado_hecho")

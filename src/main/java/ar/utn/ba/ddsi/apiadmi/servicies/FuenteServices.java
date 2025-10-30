@@ -4,11 +4,13 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
 import ar.utn.ba.ddsi.apiadmi.models.entities.Fuente;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IFuentesRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class FuenteServices implements IFuenteServices {
 
+    @Autowired
     private IFuentesRepository repoFuentes;
 
     /*@Override
@@ -16,10 +18,6 @@ public class FuenteServices implements IFuenteServices {
         this.repoFuentes.save(idFuente);
     }
 */
-    @Override
-    public void eliminarFuenteDeColeccion(Fuente unaFuente, Long idColeccion) {
-        this.repoFuentes.save(unaFuente, idColeccion);
-    }
 
     @Override
     public Fuente buscarPorId(Long id) {
