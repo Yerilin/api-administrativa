@@ -10,9 +10,9 @@ class ApiadmiApplicationTests {
 	@Test
 	void contextLoads() {
 
-		ColeccionInput cole = new ColeccionInput();
-		cole.setFuenteInput("FuenteNumero1");
-		System.out.println(cole.getFuenteInput());
+//		ColeccionInput cole = new ColeccionInput();
+//		cole.setFuenteInput("FuenteNumero1");
+//		System.out.println(cole.getFuenteInput());
 	}
 
 }
