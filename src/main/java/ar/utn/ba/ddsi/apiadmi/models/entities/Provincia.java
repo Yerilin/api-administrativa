@@ -5,18 +5,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+
 @Data
 @Entity
-
-public class Categoria {
+public class Provincia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_categoria;
-    private String nombre;
-    public Categoria(String nombre) {
-        this.nombre = nombre;
-    }
+    private Long id_provincia;
+    private String nombre; //nombre de la provincia o estado federal
+    private String pais;
 }

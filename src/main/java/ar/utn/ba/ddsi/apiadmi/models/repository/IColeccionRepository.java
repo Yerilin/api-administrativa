@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface IColeccionRepository extends JpaRepository<Coleccion,String> {
+public interface IColeccionRepository extends JpaRepository<Coleccion,Long> {
 
     // Buscar colección por título exacto
     Coleccion findByTitulo(String titulo);

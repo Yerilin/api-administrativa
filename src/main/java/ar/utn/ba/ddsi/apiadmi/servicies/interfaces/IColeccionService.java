@@ -11,7 +11,7 @@ import java.util.List;
 public interface IColeccionService {
     public List<ColeccionDto> obtenerColecciones();
     public void agregar(ColeccionInput coleccion);
-    public Coleccion actualizar(ColeccionInput coleccion);
-    public void eliminar(String idColeccion);
-    public Coleccion encontrarPorId(String id);
+    public void actualizar(Long id,ColeccionInput coleccion);
+    public void eliminar(Long idColeccion);
+    public Coleccion encontrarPorId(Long id);
 }

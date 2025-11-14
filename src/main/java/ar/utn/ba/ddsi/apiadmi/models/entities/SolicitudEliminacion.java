@@ -11,15 +11,21 @@ public class SolicitudEliminacion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id ;
-    @OneToOne
-    private Contribuyente contribuyente;
-    @OneToOne
+    private Long id_solicitud;
+    @ManyToOne
     private Hecho hecho;
+    @Column(nullable = false)
     private LocalDate fecha;
+    @Column(length = 200)
+    private String motivo;
     @Enumerated(EnumType.STRING)
-    @Column(name = "estado_coleccion")
-    private EnumEstado estado;
-    private String motivo ;
+    @Column(nullable = false)
+    private EnumEstadoSol estado;
 
+    public SolicitudEliminacion(Hecho hecho, LocalDate fecha, String motivo) {
+        this.hecho = hecho;
+        this.fecha = fecha;
+        this.motivo = motivo;
+        this.estado = EnumEstadoSol.PENDIENTE;
+    }
 }

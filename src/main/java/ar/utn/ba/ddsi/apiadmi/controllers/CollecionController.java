@@ -43,17 +43,15 @@ public class CollecionController {
     }
 
     @PutMapping ("/{id}")
-    public void actualizarColeccion(@PathVariable String id , @RequestBody ColeccionInput coleccionInput) {
+    public void actualizarColeccion(@PathVariable Long id , @RequestBody ColeccionInput coleccionInput) {
+        //DEBERIA ESTAR DENTRO DE UN TRYCATCH
+        this.coleccionService.actualizar(id,coleccionInput);
 
-        Coleccion coleccion = coleccionService.actualizar(coleccionInput);
-        if(coleccion==null){
-            new Error("No se encontro");
-        }
 
 
     }
     @DeleteMapping ("/{id}")
-    public void eliminarColeccion(@PathVariable String id ){
+    public void eliminarColeccion(@PathVariable Long id ){
 
         this.coleccionService.eliminar(id);
     }

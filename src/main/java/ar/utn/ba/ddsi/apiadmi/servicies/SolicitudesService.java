@@ -2,6 +2,7 @@ package ar.utn.ba.ddsi.apiadmi.servicies;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
 import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstado;
+import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstadoSol;
 import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
 import ar.utn.ba.ddsi.apiadmi.models.entities.SolicitudEliminacion;
 import ar.utn.ba.ddsi.apiadmi.models.repository.ISolicitudRepository;
@@ -26,7 +27,7 @@ public class SolicitudesService implements ISolicitudService {
         Hecho hecho = solicitud.getHecho();
 
         try {
-            EnumEstado nuevoEstado = EnumEstado.valueOf(estadoInput);
+            EnumEstadoSol nuevoEstado = EnumEstadoSol.valueOf(estadoInput);
             solicitud.setEstado(nuevoEstado);
             this.hechoService.actualizarElEstadoDelHecho(hecho,nuevoEstado);
         } catch (IllegalArgumentException e) {

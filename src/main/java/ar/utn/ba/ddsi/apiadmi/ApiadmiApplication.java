@@ -9,6 +9,8 @@ public class ApiadmiApplication {
 
 	public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(ApiadmiApplication.class, args);
+
+
 	}
 
 }

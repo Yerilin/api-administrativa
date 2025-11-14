@@ -8,16 +8,21 @@ public class Fuente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idFuente;
+    @Column(nullable = false)
+    private String nombre;
+    @Column(nullable = false)
+    private String url;
     @Enumerated(EnumType.STRING)
-    @Column(name = "tipo_fuente")
-    private EnumTipo tipo;
-    private String nombre ;
-    private String enpoint;
+    @Column(nullable = false)
+    private EnumTipoFuente tipoFuente;
 
-    public Fuente(EnumTipo tip, String nom, String fuente){
-        this.tipo= tip;
-        this.nombre = nom;
-        this.enpoint=fuente;
+    public Fuente(long id, String nombre, String url, EnumTipoFuente tipoFuente) {
+        this.idFuente = id;
+        this.nombre = nombre;
+        this.url = url;
+        this.tipoFuente = tipoFuente;
     }
+
+
 }

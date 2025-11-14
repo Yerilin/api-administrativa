@@ -1,19 +1,26 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Data
 @Entity
-@Setter
-@Getter
+@NoArgsConstructor
 public class Ubicacion {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private float latitud;
     private float longitud;
+    @ManyToOne
+    @JoinColumn(name = "provincia_id_provincia")
+    private Provincia provincia;
 
+    public Ubicacion(float latitud, float longitud) {
+        this.latitud = latitud;
+        this.longitud = longitud;
+    }
 }
