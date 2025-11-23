@@ -1,9 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +10,25 @@ import lombok.Setter;
 public class Contribuyente {
 
     @Id
-    @GeneratedValue
-    @Column(name="id_contribuyente")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_contribuyente;
+
     private String nombre;
     private String apellido;
-    private Integer edad;
+    private int edad;
     private Boolean anonimo;
+
+    public Contribuyente() {
+    }
+
+    public Contribuyente(Long id, String nombre, String apellido, int edad) {
+        if (edad < 0) {
+            throw new IllegalArgumentException("La edad no puede ser negativa.");
+        }
+        this.id_contribuyente = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.anonimo = false;
+    }
 }

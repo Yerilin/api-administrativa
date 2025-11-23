@@ -12,11 +12,11 @@ import lombok.Setter;
 public class Ubicacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_ubicacion;
     private float latitud;
     private float longitud;
     @ManyToOne
-    @JoinColumn(name = "provincia_id_provincia")
+    @JoinColumn(name = "id_provincia")
     private Provincia provincia;
 
     public Ubicacion(float latitud, float longitud) {

@@ -1,9 +1,7 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities;
 
-import lombok.Data;
 
-
-public enum EnumEstado {
+public enum EnumEstadoHecho {
 
     ACEPTADA,
     PENDIENTE,

@@ -12,11 +12,12 @@ public class Hecho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_hecho;
+    //getters y setters
     @Column(name = "titulo")
     private String titulo;
     @Column(name="descripcion",length = 1000)
     private String descripcion;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Categoria categoria;
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
@@ -24,14 +25,16 @@ public class Hecho {
     private LocalDate fechaDeCarga;
     @ManyToOne(cascade = CascadeType.ALL)
     private Fuente fuente;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Ubicacion ubicacion;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Etiqueta etiqueta;
-    @OneToMany
+    @Enumerated(EnumType.STRING)
+    private EnumTipoHecho tipoHecho;
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Adjunto> adjuntos;
-    @Transient
-    private EnumEstado estado;
+    @Column(name="estadoHecho")
+    private EnumEstadoHecho estado;
 
     public Hecho(String titulo, String descripcion, Categoria categoria,Ubicacion ubicacion, LocalDate fecha, Fuente fuente) {
         this.titulo = titulo;
@@ -42,10 +45,10 @@ public class Hecho {
         this.fechaDeCarga = LocalDate.now();
         this.etiqueta = null;
         this.fuente = fuente;
-        this.estado = EnumEstado.PENDIENTE;
+        this.estado = EnumEstadoHecho.PENDIENTE;
     }
 
-    public Hecho(String titulo, String descripcion, Categoria categoria,Ubicacion ubicacion, LocalDate fecha, Fuente fuente, EnumEstado estado) {
+    public Hecho(String titulo, String descripcion, Categoria categoria,Ubicacion ubicacion, LocalDate fecha, Fuente fuente, EnumEstadoHecho estado) {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.categoria = categoria;

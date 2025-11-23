@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 @Data
 @Entity
+@Table(name = "Solicitud de Eliminacion")
 public class SolicitudEliminacion {
 
     @Id
@@ -21,6 +22,11 @@ public class SolicitudEliminacion {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EnumEstadoSol estado;
+    @ManyToOne
+    private Contribuyente solicitante;
+    //podria ser null?
+    @Column
+    private boolean spam;
 
     public SolicitudEliminacion(Hecho hecho, LocalDate fecha, String motivo) {
         this.hecho = hecho;

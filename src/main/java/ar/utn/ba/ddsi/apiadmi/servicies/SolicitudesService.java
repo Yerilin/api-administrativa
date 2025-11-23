@@ -1,7 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
-import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstado;
 import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstadoSol;
 import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
 import ar.utn.ba.ddsi.apiadmi.models.entities.SolicitudEliminacion;

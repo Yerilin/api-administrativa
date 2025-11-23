@@ -15,7 +15,9 @@ public class Etiqueta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_etiqueta;
     private String nombre;
+
     public Etiqueta(String nombre) {
         this.nombre = nombre;
     }
+
 }

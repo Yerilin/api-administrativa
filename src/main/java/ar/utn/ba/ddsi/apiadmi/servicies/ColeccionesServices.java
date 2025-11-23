@@ -7,9 +7,7 @@ import ar.utn.ba.ddsi.apiadmi.models.dtos.input.CondicionInput;
 import ar.utn.ba.ddsi.apiadmi.models.entities.*;
 import ar.utn.ba.ddsi.apiadmi.models.entities.condiciones.*;
 import ar.utn.ba.ddsi.apiadmi.models.factory.ColeccionFactory;
-import ar.utn.ba.ddsi.apiadmi.models.factory.CondicionFactory;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IColeccionRepository;
-import ar.utn.ba.ddsi.apiadmi.models.repository.ICriteriosRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IColeccionService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
 import org.springframework.stereotype.Service;
@@ -44,6 +42,7 @@ public class ColeccionesServices implements IColeccionService {
 
     public List<ColeccionDto> obtenerColecciones() {
         return this.colecciones.findAll().stream().map(this::ColeccionDto).toList();
+        //if(this.colecciones.findAll().stream().map(this::ColeccionDto).toList();)
     }
 /* PARA MOSTRAR TODAS LAS COLECCIONES EN GENERAL*/
     private ColeccionDto ColeccionDto(Coleccion cole) {
@@ -52,7 +51,7 @@ public class ColeccionesServices implements IColeccionService {
         coleout.setDescripcion(cole.getDescripcion());
         //coleout.setHandle(cole.getHandle()); /*DEBERIA AGREGARSE*/
         coleout.setCondiciones(cole.getCondicionDePertenencia().stream()
-                .map(c-> new CondicionDTO(c.getId(),c.getDetail()))
+                .map(c-> new CondicionDTO(c.getId_condicion(),c.getDetail()))
                 .collect(Collectors.toList())
         );
         return coleout;
@@ -172,15 +171,14 @@ public class ColeccionesServices implements IColeccionService {
 
             case "fechaAntes":
                 LocalDate hasta = LocalDate.parse(valor);
-                return new CondicionFechaAntes(hasta);
+                return new CondicionFechaANTES(hasta);
 
             case "categoria":
                 Categoria categoria= this.categoriaService.buscarPorId(valor);
-                if(categoria!=null) return new CondicionCategoria(valor);
-
+                if(categoria!=null) return new CondicionCategoria(categoria);
             case "etiqueta":
                 Etiqueta etiqueta =this.etiquetaService.buscarPorId(valor);
-                if(etiqueta!=null) return new CondicionEtiqueta(valor);
+                if(etiqueta!=null) return new CondicionEtiqueta(etiqueta);
 
             case "fuente":
                     Fuente fuente = this.fuenteService.buscarPorId(parseLong(valor));
