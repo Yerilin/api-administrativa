@@ -6,21 +6,16 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = false)
 @DiscriminatorValue("fuente")
 public class CondicionFuente extends InterfaceCondicion {
 
     @ManyToOne
-    @JoinColumn(name = "fuente_id_fuente")
     private Fuente fuente;
 
     @Override
