@@ -1,9 +1,11 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.coleccion;
 
 
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 
 @Data
@@ -14,7 +16,7 @@ public class HechoXColeccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id_hecho_x_coleccion;
 
     @ManyToOne
     @JoinColumn(name = "id_hecho")
@@ -25,6 +27,7 @@ public class HechoXColeccion {
     private Coleccion coleccion;
 
     @Column(name = "consensuado", nullable = false)
+    @ColumnDefault("0")
     private Boolean consensuado;
 
     public HechoXColeccion(Hecho hecho, Coleccion coleccion, Boolean consensuado) {

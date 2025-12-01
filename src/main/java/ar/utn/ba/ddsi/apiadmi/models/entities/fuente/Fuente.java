@@ -1,5 +1,6 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.fuente;
 
+import ar.utn.ba.ddsi.apiadmi.utils.EnumTipoFuente;
 import jakarta.persistence.*;
 import lombok.Data;
 @Data

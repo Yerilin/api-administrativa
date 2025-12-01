@@ -2,9 +2,7 @@ package ar.utn.ba.ddsi.apiadmi.servicies.interfaces;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.ColeccionDto;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.ColeccionInput;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
-import org.springframework.data.jpa.repository.JpaRepository;
-
+import ar.utn.ba.ddsi.apiadmi.models.entities.coleccion.Coleccion;
 
 
 import java.util.List;

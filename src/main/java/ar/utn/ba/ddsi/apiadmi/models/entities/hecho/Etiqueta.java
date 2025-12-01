@@ -1,22 +1,23 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.hecho;
+
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 @Data
 @Entity
+public class Etiqueta {
 
-public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_categoria;
+    private Long id_etiqueta;
     private String nombre;
-    public Categoria(String nombre) {
+
+    public Etiqueta(String nombre) {
         this.nombre = nombre;
     }
+
 }

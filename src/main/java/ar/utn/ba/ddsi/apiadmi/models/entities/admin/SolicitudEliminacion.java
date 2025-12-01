@@ -1,5 +1,7 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.admin;
 
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumEstadoSol;
 import jakarta.persistence.*;
 import lombok.Data;
 

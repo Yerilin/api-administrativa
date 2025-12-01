@@ -1,4 +1,4 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.admin;
 
 import jakarta.persistence.*;
 import lombok.Getter;

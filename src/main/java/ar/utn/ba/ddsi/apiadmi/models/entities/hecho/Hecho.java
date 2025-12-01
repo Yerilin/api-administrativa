@@ -1,8 +1,12 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.hecho;
+import ar.utn.ba.ddsi.apiadmi.models.entities.fuente.Fuente;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumEstadoHecho;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumTipoHecho;
 import jakarta.persistence.*;
 import lombok.Data;
-import ar.utn.ba.ddsi.apiadmi.models.entities.EnumTipoFuente;
+
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -22,7 +26,7 @@ public class Hecho {
     @Column(name = "fecha", nullable = false)
     private LocalDate fecha;
     @Column(name = "fechaCarga", nullable = false)
-    private LocalDate fechaDeCarga;
+    private LocalDateTime fechaDeCarga;
     @ManyToOne(cascade = CascadeType.ALL)
     private Fuente fuente;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -42,7 +46,7 @@ public class Hecho {
         this.categoria = categoria;
         this.ubicacion = ubicacion;
         this.fecha = fecha;
-        this.fechaDeCarga = LocalDate.now();
+        this.fechaDeCarga = LocalDateTime.now();
         this.etiqueta = null;
         this.fuente = fuente;
         this.estado = EnumEstadoHecho.PENDIENTE;
@@ -54,7 +58,7 @@ public class Hecho {
         this.categoria = categoria;
         this.ubicacion = ubicacion;
         this.fecha = fecha;
-        this.fechaDeCarga = LocalDate.now();
+        this.fechaDeCarga = LocalDateTime.now();
         this.etiqueta = null;
         this.fuente = fuente;
         this.estado = estado;

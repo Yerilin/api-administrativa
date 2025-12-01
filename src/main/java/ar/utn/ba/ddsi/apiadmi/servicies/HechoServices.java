@@ -1,8 +1,8 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstadoHecho;
-import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstadoSol;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumEstadoHecho;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumEstadoSol;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IHechosRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IHechoService;
 import org.springframework.beans.factory.annotation.Autowired;

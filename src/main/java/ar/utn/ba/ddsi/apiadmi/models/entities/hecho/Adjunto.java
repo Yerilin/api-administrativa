@@ -1,4 +1,5 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.hecho;
+import ar.utn.ba.ddsi.apiadmi.utils.TipoMedia;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

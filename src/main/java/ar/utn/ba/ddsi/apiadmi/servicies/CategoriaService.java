@@ -1,6 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Categoria;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
 import ar.utn.ba.ddsi.apiadmi.models.repository.ICategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,8 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.coleccion;
 
+import ar.utn.ba.ddsi.apiadmi.models.entities.fuente.Fuente;
 import ar.utn.ba.ddsi.apiadmi.models.entities.condiciones.InterfaceCondicion;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumTipoDeAlgoritmo;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -30,9 +32,9 @@ public class Coleccion {
     private List<HechoXColeccion> hechos;
     @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
-            name = "criterio_x_coleccion",
+            name = "condicion_x_coleccion",
             joinColumns = @JoinColumn(name = "id_coleccion"),
-            inverseJoinColumns = @JoinColumn(name = "id_criterio")
+            inverseJoinColumns = @JoinColumn(name = "id_condicion")
     )
     private List<InterfaceCondicion> condicionDePertenencia;
     @Enumerated(EnumType.STRING)

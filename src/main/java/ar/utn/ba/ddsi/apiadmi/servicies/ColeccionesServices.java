@@ -4,12 +4,16 @@ import ar.utn.ba.ddsi.apiadmi.models.dtos.ColeccionDto;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.CondicionDTO;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.ColeccionInput;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.CondicionInput;
-import ar.utn.ba.ddsi.apiadmi.models.entities.*;
+import ar.utn.ba.ddsi.apiadmi.models.entities.coleccion.Coleccion;
 import ar.utn.ba.ddsi.apiadmi.models.entities.condiciones.*;
+import ar.utn.ba.ddsi.apiadmi.models.entities.fuente.Fuente;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Etiqueta;
 import ar.utn.ba.ddsi.apiadmi.models.factory.ColeccionFactory;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IColeccionRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IColeccionService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumTipoDeAlgoritmo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,7 +1,7 @@
 package ar.utn.ba.ddsi.apiadmi.models.factory;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.ColeccionInput;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
+import ar.utn.ba.ddsi.apiadmi.models.entities.coleccion.Coleccion;
 import org.springframework.stereotype.Component;
 
 @Component

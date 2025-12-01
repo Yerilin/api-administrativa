@@ -1,6 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.models.repository;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Categoria;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

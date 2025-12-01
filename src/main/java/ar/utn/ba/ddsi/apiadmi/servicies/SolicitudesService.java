@@ -1,9 +1,9 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
-import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstadoSol;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
-import ar.utn.ba.ddsi.apiadmi.models.entities.SolicitudEliminacion;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumEstadoSol;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
+import ar.utn.ba.ddsi.apiadmi.models.entities.admin.SolicitudEliminacion;
 import ar.utn.ba.ddsi.apiadmi.models.repository.ISolicitudRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IHechoService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.ISolicitudService;

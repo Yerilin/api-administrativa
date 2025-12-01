@@ -1,10 +1,9 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities.condiciones;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Fuente;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
+import ar.utn.ba.ddsi.apiadmi.models.entities.fuente.Fuente;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.*;
 

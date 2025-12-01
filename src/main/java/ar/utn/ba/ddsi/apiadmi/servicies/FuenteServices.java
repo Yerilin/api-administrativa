@@ -1,7 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Coleccion;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Fuente;
+import ar.utn.ba.ddsi.apiadmi.models.entities.fuente.Fuente;
 import ar.utn.ba.ddsi.apiadmi.models.repository.IFuentesRepository;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,5 @@
 package ar.utn.ba.ddsi.apiadmi.models.repository.imp;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Fuente;
-import ar.utn.ba.ddsi.apiadmi.models.repository.IFuentesRepository;
-import org.springframework.stereotype.Repository;
-
 
 public class FuentesRepository{
 

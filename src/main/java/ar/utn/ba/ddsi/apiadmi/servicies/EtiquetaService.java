@@ -1,6 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.servicies;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Etiqueta;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Etiqueta;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IEtiquetaRepository;
 import org.springframework.stereotype.Service;
 

@@ -1,8 +1,8 @@
 package ar.utn.ba.ddsi.apiadmi.servicies.interfaces;
 
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.EnumEstadoSol;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
+import ar.utn.ba.ddsi.apiadmi.utils.EnumEstadoSol;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
 
 public interface IHechoService {
 

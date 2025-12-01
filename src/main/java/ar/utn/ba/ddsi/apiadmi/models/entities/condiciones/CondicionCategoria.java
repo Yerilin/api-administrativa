@@ -1,7 +1,7 @@
 package ar.utn.ba.ddsi.apiadmi.models.entities.condiciones;
 
-import ar.utn.ba.ddsi.apiadmi.models.entities.Categoria;
-import ar.utn.ba.ddsi.apiadmi.models.entities.Hecho;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
+import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
 import jakarta.persistence.*;
 import lombok.*;
 

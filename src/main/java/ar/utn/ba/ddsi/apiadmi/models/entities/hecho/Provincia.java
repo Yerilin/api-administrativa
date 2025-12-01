@@ -1,4 +1,4 @@
-package ar.utn.ba.ddsi.apiadmi.models.entities;
+package ar.utn.ba.ddsi.apiadmi.models.entities.hecho;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
