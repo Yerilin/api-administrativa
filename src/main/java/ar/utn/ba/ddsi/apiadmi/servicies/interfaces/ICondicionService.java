@@ -9,4 +9,5 @@ public interface ICondicionService {
 
     InterfaceCondicion buscarPorId(Long Id);
 
+
 }

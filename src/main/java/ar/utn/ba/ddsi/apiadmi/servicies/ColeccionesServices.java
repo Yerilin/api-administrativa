@@ -36,11 +36,13 @@ public class ColeccionesServices implements IColeccionService {
     private EtiquetaService etiquetaService;
     private CondicionService condicionService;
 
-    public ColeccionesServices(IColeccionRepository repo, IFuenteServices fuente, ColeccionFactory factory,CondicionService condiciones) {
+    public ColeccionesServices(IColeccionRepository repo, IFuenteServices fuente, ColeccionFactory factory,CondicionService condiciones,CategoriaService serviceCate,EtiquetaService serviceEtiqueta) {
         this.colecciones = repo;
         this.fuenteService = fuente;
         this.coleccionFactory=factory;
         this.condicionService= condiciones;
+        this.categoriaService= serviceCate;
+        this.etiquetaService = serviceEtiqueta;
     }
 
 
@@ -123,11 +125,30 @@ public class ColeccionesServices implements IColeccionService {
                     .collect(Collectors.toList());
             cole.setFuentes(nuevasFuentes);
 
-            // condiciones
+            // Condciones
+            List<InterfaceCondicion> condicionesOriginales = cole.getCondicionDePertenencia();
             List<InterfaceCondicion> nuevasCondiciones = input.getCriteriosInput().stream()
                     .map(this::cargarOCrearCondicion)
                     .collect(Collectors.toList());
-            cole.setCondicionDePertenencia(nuevasCondiciones);
+
+            // 1 BUSCAR PARA ELIMINAR DE BASE DE DATOS
+
+            List<InterfaceCondicion> paraEliminar = condicionesOriginales.stream()
+                    .filter(cond -> !nuevasCondiciones.contains(cond))
+                    .collect(Collectors.toList());
+                //BORRAMOS LAS CONDICIONES VIEJAS
+            for(InterfaceCondicion condicion : paraEliminar) {
+                this.condicionService.deleteBy(condicion.getId_condicion());
+            }
+            // 2 ELIMINAR CONDICIONES QUE YA NO ESTÁN
+            condicionesOriginales.removeIf(cond -> !nuevasCondiciones.contains(cond));
+
+            // 3 AGREGAR NUEVAS QUE NO ESTABAN
+            nuevasCondiciones.stream()
+                    .filter(cond -> !condicionesOriginales.contains(cond))
+                    .forEach(condicionesOriginales::add);
+
+            cole.setCondicionDePertenencia(condicionesOriginales);
 
             colecciones.save(cole);
         } catch (Exception e) {
