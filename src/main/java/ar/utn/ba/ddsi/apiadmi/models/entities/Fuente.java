@@ -22,6 +22,9 @@ public class Fuente {
         this.url = url;
         this.tipoFuente = tipoFuente;
     }
+    protected Fuente() {
+    }
+
 
 
 }

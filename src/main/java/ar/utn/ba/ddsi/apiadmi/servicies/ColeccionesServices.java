@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -86,12 +87,13 @@ public class ColeccionesServices implements IColeccionService {
                 .collect(Collectors.toList());
 
         List<InterfaceCondicion> criterios = coleccion.getCriteriosInput().stream()
-                .map(a-> this.crearCondicion(a))
+                .map(a-> this.cargarOCrearCondicion(a))
                 .collect(Collectors.toList());
 
 
         Coleccion cole = this.coleccionFactory.crearColeccion(coleccion);
         cole.setFuentes(fuentes);
+        cole.setTipoDeAlgoritmo(EnumTipoDeAlgoritmo.valueOf(coleccion.getAlgoritmoConcenso()));
         cole.setCondicionDePertenencia(criterios);
 
 
@@ -166,11 +168,15 @@ public class ColeccionesServices implements IColeccionService {
 
 
             case "fechaDespues" :
-                LocalDate desde = LocalDate.parse(valor);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+                LocalDate desde = LocalDate.parse(valor, formatter);
+
                 return new CondicionFechaDESPUES(desde);
 
             case "fechaAntes":
-                LocalDate hasta = LocalDate.parse(valor);
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yy-MM-dd");
+                LocalDate hasta = LocalDate.parse(valor, formatter1);
+
                 return new CondicionFechaANTES(hasta);
 
             case "categoria":
