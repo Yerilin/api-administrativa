@@ -125,31 +125,28 @@ public class ColeccionesServices implements IColeccionService {
                     .collect(Collectors.toList());
             cole.setFuentes(nuevasFuentes);
 
-            // Condciones
             List<InterfaceCondicion> condicionesOriginales = cole.getCondicionDePertenencia();
+
             List<InterfaceCondicion> nuevasCondiciones = input.getCriteriosInput().stream()
                     .map(this::cargarOCrearCondicion)
                     .collect(Collectors.toList());
 
-            // 1 BUSCAR PARA ELIMINAR DE BASE DE DATOS
-
+            // Eliminar de BD las condiciones borradas
             List<InterfaceCondicion> paraEliminar = condicionesOriginales.stream()
                     .filter(cond -> !nuevasCondiciones.contains(cond))
                     .collect(Collectors.toList());
-                //BORRAMOS LAS CONDICIONES VIEJAS
-            for(InterfaceCondicion condicion : paraEliminar) {
+
+            for (InterfaceCondicion condicion : paraEliminar) {
                 this.condicionService.deleteBy(condicion.getId_condicion());
             }
-            // 2 ELIMINAR CONDICIONES QUE YA NO ESTÁN
-            condicionesOriginales.removeIf(cond -> !nuevasCondiciones.contains(cond));
 
-            // 3 AGREGAR NUEVAS QUE NO ESTABAN
-            nuevasCondiciones.stream()
-                    .filter(cond -> !condicionesOriginales.contains(cond))
-                    .forEach(condicionesOriginales::add);
+            // *** PASO IMPORTANTE ***
+            // Limpiar relaciones (esto elimina filas de condicion_x_coleccion)
+            cole.getCondicionDePertenencia().clear();
 
-            cole.setCondicionDePertenencia(condicionesOriginales);
-
+            // Agregar las nuevas
+            cole.getCondicionDePertenencia().addAll(nuevasCondiciones);
+            
             colecciones.save(cole);
         } catch (Exception e) {
             throw new RuntimeException(e);
