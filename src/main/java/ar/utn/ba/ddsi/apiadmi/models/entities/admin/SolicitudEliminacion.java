@@ -24,13 +24,13 @@ public class SolicitudEliminacion {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private EnumEstadoSol estado;
-    @ManyToOne
-    private Contribuyente solicitante;
-    //podria ser null?
+    @Column(nullable = false)
+    private Long id_solicitante;
     @Column
     private boolean spam;
 
-    public SolicitudEliminacion(Hecho hecho, LocalDate fecha, String motivo) {
+    public SolicitudEliminacion(Long id_solicitante,Hecho hecho, LocalDate fecha, String motivo) {
+        this.id_solicitante = id_solicitante;
         this.hecho = hecho;
         this.fecha = fecha;
         this.motivo = motivo;

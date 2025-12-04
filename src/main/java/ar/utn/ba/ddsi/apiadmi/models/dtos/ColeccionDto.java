@@ -6,10 +6,11 @@ import java.util.List;
 
 @Data
 public class ColeccionDto {
-   // private String handle;
+    private String id;
     private String titulo;
     private String descripcion;
     private List<CondicionDTO> Condiciones ;
+    private String algoritmoDeConsenso;
 
 
     /*

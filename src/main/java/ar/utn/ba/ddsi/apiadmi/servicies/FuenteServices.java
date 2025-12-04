@@ -6,6 +6,8 @@ import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FuenteServices implements IFuenteServices {
 
@@ -24,6 +26,12 @@ public class FuenteServices implements IFuenteServices {
                 .orElseThrow(() -> new RuntimeException("Colección no encontrada"));
 
         return fuente;
+    }
+
+    @Override
+    public List<Fuente> obtenerFuentes() {
+        List<Fuente> fuentes = this.repoFuentes.findAll();
+        return fuentes;
     }
 
 }
