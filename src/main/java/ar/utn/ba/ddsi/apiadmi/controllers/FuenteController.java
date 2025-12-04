@@ -4,6 +4,7 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.fuente.Fuente;
 import ar.utn.ba.ddsi.apiadmi.servicies.SolicitudesService;
 import ar.utn.ba.ddsi.apiadmi.servicies.interfaces.IFuenteServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/fuentes")
+@CrossOrigin(origins= "http://localhost:3000")
+
 public class FuenteController {
 
     @Autowired

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
 @RestController
 @RequestMapping ("/solicitudes")
+@CrossOrigin(origins= "http://localhost:3000")
+
 public class SolicitudController {
 
     @Autowired
