@@ -12,8 +12,8 @@ public class ColeccionFactory {
     public Coleccion crearColeccion(ColeccionInput coleccion){
 
         Coleccion cole = new Coleccion();
-        cole.setTitulo(coleccion.getTituloInput());
-        cole.setDescripcion(coleccion.getDescripcionInput());
+        cole.setTitulo(coleccion.getTitulo());
+        cole.setDescripcion(coleccion.getDescripcion());
         // NOTA: las fuentes y criterios se setean después desde el Service
         return cole;
     }

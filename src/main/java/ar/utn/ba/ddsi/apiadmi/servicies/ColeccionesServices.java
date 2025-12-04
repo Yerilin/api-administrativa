@@ -88,11 +88,11 @@ public class ColeccionesServices implements IColeccionService {
     @Override
     public void agregar(ColeccionInput coleccion) {
 
-        List<Fuente> fuentes = coleccion.getFuentesInput().stream()
+        List<Fuente> fuentes = coleccion.getFuentes().stream()
                 .map(a -> this.fuenteService.buscarPorId(a))
                 .collect(Collectors.toList());
 
-        List<InterfaceCondicion> criterios = coleccion.getCriteriosInput().stream()
+        List<InterfaceCondicion> criterios = coleccion.getCriterios().stream()
                 .map(a-> this.cargarOCrearCondicion(a))
                 .collect(Collectors.toList());
 
@@ -114,20 +114,20 @@ public class ColeccionesServices implements IColeccionService {
             Coleccion cole = colecciones.findById(id)
                     .orElseThrow(() -> new RuntimeException("No existe la colección"));
 
-            cole.setTitulo(input.getTituloInput());
-            cole.setDescripcion(input.getDescripcionInput());
+            cole.setTitulo(input.getTitulo());
+            cole.setDescripcion(input.getDescripcion());
             //Actualizacion de algoritmo de concenso
             cole.setTipoDeAlgoritmo(EnumTipoDeAlgoritmo.valueOf(input.getAlgoritmoConcenso()));
 
             // fuentes
-            List<Fuente> nuevasFuentes = input.getFuentesInput().stream()
+            List<Fuente> nuevasFuentes = input.getFuentes().stream()
                     .map(f -> fuenteService.buscarPorId(f))
                     .collect(Collectors.toList());
             cole.setFuentes(nuevasFuentes);
 
             List<InterfaceCondicion> condicionesOriginales = cole.getCondicionDePertenencia();
 
-            List<InterfaceCondicion> nuevasCondiciones = input.getCriteriosInput().stream()
+            List<InterfaceCondicion> nuevasCondiciones = input.getCriterios().stream()
                     .map(this::cargarOCrearCondicion)
                     .collect(Collectors.toList());
 
