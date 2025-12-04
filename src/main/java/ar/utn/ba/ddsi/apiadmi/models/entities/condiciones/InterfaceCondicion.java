@@ -18,9 +18,8 @@ public abstract class InterfaceCondicion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_condicion;
 
-    public boolean cumpleCondicion(Hecho hecho) {
-        return false;
-    }
 
-    public abstract String getDetail();
+
+    public abstract String tipo();
+    public abstract String valor();
 }

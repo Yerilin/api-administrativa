@@ -6,11 +6,13 @@ import lombok.Data;
 @Data
 public class CondicionDTO {
     private Long id;
-    private String detail;
+    private String tipo;
+    private String valor;
 
-    public CondicionDTO(Long id, String Detail){
+    public CondicionDTO(Long id, String tipo , String valor ){
         this.id = id;
-        this.detail = Detail;
+        this.tipo = tipo;
+        this.valor = valor;
     }
 }
 

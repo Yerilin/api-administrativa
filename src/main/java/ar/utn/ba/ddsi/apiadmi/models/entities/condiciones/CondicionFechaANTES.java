@@ -19,12 +19,11 @@ public class CondicionFechaANTES extends InterfaceCondicion {
     private LocalDate fechaAntes;
 
     @Override
-    public boolean cumpleCondicion(Hecho hecho) {
-        return hecho.getFecha().isBefore(fechaAntes);
+    public String tipo(){
+        return "fuente";
     }
-
     @Override
-    public String getDetail() {
-        return "fechaAntes: " + fechaAntes.toString();
+    public String valor() {
+        return fechaAntes.toString();
     }
 }

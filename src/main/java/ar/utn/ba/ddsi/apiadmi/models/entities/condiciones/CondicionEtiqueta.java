@@ -18,12 +18,12 @@ public class CondicionEtiqueta extends InterfaceCondicion {
     private Etiqueta etiqueta;
 
     @Override
-    public boolean cumpleCondicion(Hecho hecho) {
-        return hecho.getEtiqueta().getNombre().equals(this.etiqueta.getNombre());
+    public String tipo(){
+        return "etiqueta";
     }
 
     @Override
-    public String getDetail() {
-        return "etiqueta: " + this.etiqueta.getNombre();
+    public String valor() {
+        return this.etiqueta.getNombre();
     }
 }

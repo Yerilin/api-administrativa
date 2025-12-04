@@ -14,15 +14,16 @@ import java.time.LocalDate;
 public class CondicionFechaDESPUES extends InterfaceCondicion {
     private LocalDate fechaDespues;
 
+
     @Override
-    public boolean cumpleCondicion(Hecho hecho) {
-        return hecho.getFecha().isAfter(fechaDespues);
+    public String tipo() {
+        return "fechaDespues";
     }
 
 
     @Override
-    public String getDetail() {
-        return "fechaDespues: " + fechaDespues.toString();
+    public String valor() {
+        return fechaDespues.toString();
     }
 }
 

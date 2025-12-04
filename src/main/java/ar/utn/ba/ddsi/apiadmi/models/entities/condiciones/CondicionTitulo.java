@@ -14,13 +14,12 @@ public class CondicionTitulo extends InterfaceCondicion {
     private String titulo;
 
     @Override
-    public boolean cumpleCondicion(Hecho hecho) {
-        return hecho.getTitulo().equals(this.titulo);
+    public String tipo(){
+        return "titulo";
     }
 
-
     @Override
-    public String getDetail() {
-        return "titulo:" + titulo;
+    public String valor() {
+        return titulo;
     }
 }

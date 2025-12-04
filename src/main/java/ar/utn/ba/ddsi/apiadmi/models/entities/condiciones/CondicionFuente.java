@@ -17,13 +17,13 @@ public class CondicionFuente extends InterfaceCondicion {
     @ManyToOne
     private Fuente fuente;
 
-    @Override
-    public boolean cumpleCondicion(Hecho hecho) {
-        return fuente.equals(hecho.getFuente());
-    }
 
     @Override
-    public String getDetail() {
-        return "fuente: " + fuente.getNombre();
+    public String tipo(){
+        return "fuente";
+    }
+    @Override
+    public String valor() {
+        return fuente.getNombre();
     }
 }

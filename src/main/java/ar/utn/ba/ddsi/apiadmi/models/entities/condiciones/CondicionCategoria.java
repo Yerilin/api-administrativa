@@ -16,12 +16,12 @@ public class CondicionCategoria extends InterfaceCondicion {
     private Categoria categoria; // creo que es mas sencillo asi
 
     @Override
-    public boolean cumpleCondicion(Hecho hecho) {
-        return hecho.getCategoria().getNombre().equals(this.categoria.getNombre());
+    public String tipo(){
+        return "etiqueta";
     }
 
     @Override
-    public String getDetail() {
-        return "categoria: " + this.categoria.getNombre();
+    public String valor() {
+        return this.categoria.getNombre();
     }
 }
