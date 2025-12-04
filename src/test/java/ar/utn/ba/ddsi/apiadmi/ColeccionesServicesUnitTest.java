@@ -44,10 +44,10 @@ class ColeccionesServicesUnitTest {
     @Test
     void agregar_callsSaveWithCreatedEntity() {
         ColeccionInput input = new ColeccionInput();
-        input.setTituloInput("T");
-        input.setDescripcionInput("D");
-        input.setFuentesInput(List.of(1L));
-        input.setCriteriosInput(List.of());
+        input.setTitulo("T");
+        input.setDescripcion("D");
+        input.setFuentes(List.of(1L));
+        input.setCriterios(List.of());
         input.setAlgoritmoConcenso("DEFAULT");
 
         // factory should create a Coleccion object

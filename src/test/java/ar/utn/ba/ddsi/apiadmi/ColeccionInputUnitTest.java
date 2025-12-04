@@ -12,14 +12,14 @@ class ColeccionInputUnitTest {
     @Test
     void gettersAndSetters_work() {
         ColeccionInput input = new ColeccionInput();
-        input.setTituloInput("MiTitulo");
-        input.setDescripcionInput("Desc");
-        input.setFuentesInput(List.of(1L, 2L));
+        input.setTitulo("MiTitulo");
+        input.setDescripcion("Desc");
+        input.setFuentes(List.of(1L, 2L));
         input.setAlgoritmoConcenso("DEFAULT");
 
-        assertEquals("MiTitulo", input.getTituloInput());
-        assertEquals("Desc", input.getDescripcionInput());
-        assertEquals(2, input.getFuentesInput().size());
+        assertEquals("MiTitulo", input.getTitulo());
+        assertEquals("Desc", input.getDescripcion());
+        assertEquals(2, input.getFuentes().size());
         assertEquals("DEFAULT", input.getAlgoritmoConcenso());
     }
 }
