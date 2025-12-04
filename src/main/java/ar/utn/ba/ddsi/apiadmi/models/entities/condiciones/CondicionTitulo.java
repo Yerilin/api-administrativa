@@ -21,6 +21,6 @@ public class CondicionTitulo extends InterfaceCondicion {
 
     @Override
     public String getDetail() {
-        return "titulo: " + titulo;
+        return "titulo:" + titulo;
     }
 }
