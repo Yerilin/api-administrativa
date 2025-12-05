@@ -54,6 +54,7 @@ public class ColeccionesServices implements IColeccionService {
 /* PARA MOSTRAR TODAS LAS COLECCIONES EN GENERAL*/
     private ColeccionDto ColeccionDto(Coleccion cole) {
         ColeccionDto coleout = new ColeccionDto();
+        coleout.setId_coleccion(cole.getId_coleccion());
         coleout.setTitulo(cole.getTitulo());
         coleout.setDescripcion(cole.getDescripcion());
         //coleout.setHandle(cole.getHandle()); /*DEBERIA AGREGARSE*/
@@ -61,6 +62,8 @@ public class ColeccionesServices implements IColeccionService {
                 .map(c-> new CondicionDTO(c.getId_condicion(),c.tipo(),c.valor()))
                 .collect(Collectors.toList())
         );
+        coleout.setFuentes(cole.getFuentes());
+        coleout.setAlgoritmoDeConsenso(cole.getTipoDeAlgoritmo().toString());
         return coleout;
     }
     /*ESTE PARA PODER TENER TODOS LOS DATOS DE UNA COLECCION EN SI*/
@@ -111,14 +114,17 @@ public class ColeccionesServices implements IColeccionService {
     public void actualizar(Long id,ColeccionInput input){
 
         try {
+
             Coleccion cole = colecciones.findById(id)
                     .orElseThrow(() -> new RuntimeException("No existe la colección"));
 
             cole.setTitulo(input.getTitulo());
             cole.setDescripcion(input.getDescripcion());
             //Actualizacion de algoritmo de concenso
+            String algoInput = input.getAlgoritmoConcenso();
+            if(algoInput != null) {
             cole.setTipoDeAlgoritmo(EnumTipoDeAlgoritmo.valueOf(input.getAlgoritmoConcenso()));
-
+            }
             // fuentes
             List<Fuente> nuevasFuentes = input.getFuentes().stream()
                     .map(f -> fuenteService.buscarPorId(f))
@@ -190,18 +196,17 @@ public class ColeccionesServices implements IColeccionService {
 
 
             case "fechaDespues" :
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate desde = LocalDate.parse(valor, formatter);
-
                 return new CondicionFechaDESPUES(desde);
 
             case "fechaAntes":
-                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yy-MM-dd");
+                DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 LocalDate hasta = LocalDate.parse(valor, formatter1);
 
                 return new CondicionFechaANTES(hasta);
 
-            case "categoria":
+            case "Categoria":
                 Categoria categoria= this.categoriaService.buscarPorId(valor);
                 if(categoria!=null) return new CondicionCategoria(categoria);
             case "etiqueta":
