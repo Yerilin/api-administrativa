@@ -15,9 +15,9 @@ public class SolicitudController {
 
 
     @PutMapping("/{id}")
-    public void actualizarEstado(@RequestBody SolicitudInput soli){
+    public void actualizarEstado(@PathVariable Long id , @RequestBody SolicitudInput soli){
 
-        this.solicitudesService.actualizarEstado(soli);
+        this.solicitudesService.actualizarEstado(id , soli);
 
 
     }

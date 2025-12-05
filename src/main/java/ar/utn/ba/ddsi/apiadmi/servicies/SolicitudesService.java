@@ -18,8 +18,8 @@ public class SolicitudesService implements ISolicitudService {
     private IHechoService hechoService;
 
     @Override
-    public void actualizarEstado(SolicitudInput solo) {
-        SolicitudEliminacion solicitud = this.solicitudRepo.findById(Long.valueOf(solo.getId())).
+    public void actualizarEstado(Long id, SolicitudInput solo) {
+        SolicitudEliminacion solicitud = this.solicitudRepo.findById(Long.valueOf(id)).
                 orElseThrow(() -> new RuntimeException("Solicitud no encontrada"));
 
         String estadoInput = solo.getEstado().toUpperCase();

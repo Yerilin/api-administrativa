@@ -5,6 +5,5 @@ import lombok.Data;
 @Data
 public class SolicitudInput {
 
-    private String id;
     private String estado;
 }

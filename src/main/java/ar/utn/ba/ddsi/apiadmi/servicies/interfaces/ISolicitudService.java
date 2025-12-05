@@ -4,5 +4,6 @@ import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
 
 public interface ISolicitudService {
 
-    public void actualizarEstado (SolicitudInput solo);
+
+    void actualizarEstado(Long id, SolicitudInput solo);
 }
