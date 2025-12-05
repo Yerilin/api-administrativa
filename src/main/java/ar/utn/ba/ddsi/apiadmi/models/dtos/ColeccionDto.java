@@ -9,7 +9,7 @@ public class ColeccionDto {
     private String id;
     private String titulo;
     private String descripcion;
-    private List<CondicionDTO> Condiciones ;
+    private List<CondicionDTO> criterios ;
     private String algoritmoDeConsenso;
 
 

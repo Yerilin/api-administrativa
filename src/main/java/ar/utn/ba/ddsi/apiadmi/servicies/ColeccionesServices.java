@@ -57,7 +57,7 @@ public class ColeccionesServices implements IColeccionService {
         coleout.setTitulo(cole.getTitulo());
         coleout.setDescripcion(cole.getDescripcion());
         //coleout.setHandle(cole.getHandle()); /*DEBERIA AGREGARSE*/
-        coleout.setCondiciones(cole.getCondicionDePertenencia().stream()
+        coleout.setCriterios(cole.getCondicionDePertenencia().stream()
                 .map(c-> new CondicionDTO(c.getId_condicion(),c.tipo(),c.valor()))
                 .collect(Collectors.toList())
         );
