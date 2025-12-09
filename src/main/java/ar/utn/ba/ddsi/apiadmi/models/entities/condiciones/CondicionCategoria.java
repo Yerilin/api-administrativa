@@ -17,7 +17,7 @@ public class CondicionCategoria extends InterfaceCondicion {
 
     @Override
     public String tipo(){
-        return "etiqueta";
+        return "categoria";
     }
 
     @Override
