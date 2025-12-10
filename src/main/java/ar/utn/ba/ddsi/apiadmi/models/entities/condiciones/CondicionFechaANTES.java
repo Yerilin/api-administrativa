@@ -20,7 +20,7 @@ public class CondicionFechaANTES extends InterfaceCondicion {
 
     @Override
     public String tipo(){
-        return "fuente";
+        return "fechaAntes";
     }
     @Override
     public String valor() {

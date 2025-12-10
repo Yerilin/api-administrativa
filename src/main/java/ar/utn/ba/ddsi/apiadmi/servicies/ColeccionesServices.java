@@ -117,7 +117,7 @@ public class ColeccionesServices implements IColeccionService {
 
             Coleccion cole = colecciones.findById(id)
                     .orElseThrow(() -> new RuntimeException("No existe la colección"));
-
+            System.out.println(input);
             cole.setTitulo(input.getTitulo());
             cole.setDescripcion(input.getDescripcion());
             //Actualizacion de algoritmo de concenso
