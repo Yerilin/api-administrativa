@@ -1,6 +1,7 @@
 package ar.utn.ba.ddsi.apiadmi.controllers;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.ColeccionDto;
+import ar.utn.ba.ddsi.apiadmi.models.dtos.input.CategoriaDTO;
 import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
 import ar.utn.ba.ddsi.apiadmi.models.repository.ICategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/categorias")
@@ -20,9 +22,12 @@ public class CriteriosController {
     private ICategoriaRepository categoriaRepository;
 
     @GetMapping
-    public List<Categoria> obtenerColecciones(){
+    public List<CategoriaDTO> obtenerColecciones(){
 
-        return this.categoriaRepository.findAll();
+        return this.categoriaRepository.findAll()
+                .stream()
+                .map(categoria -> new CategoriaDTO(categoria.getNombre()))
+                .collect(Collectors.toList());
 
     }
 }
