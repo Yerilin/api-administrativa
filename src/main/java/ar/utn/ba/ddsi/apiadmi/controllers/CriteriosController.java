@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/criterios")
+@RequestMapping("/categorias")
 @CrossOrigin(origins= "http://localhost:3000")
 public class CriteriosController {
 
