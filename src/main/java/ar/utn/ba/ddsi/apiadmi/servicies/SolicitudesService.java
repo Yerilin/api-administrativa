@@ -13,14 +13,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class SolicitudesService implements ISolicitudService {
 
+    private final ISolicitudRepository solicitudRepo;
+    private final IHechoService hechoService;
+
     @Autowired
-    private ISolicitudRepository solicitudRepo;
-    private IHechoService hechoService;
+    public SolicitudesService(ISolicitudRepository solicitudRepo, IHechoService hechoService) {
+        this.solicitudRepo = solicitudRepo;
+        this.hechoService = hechoService;
+    }
 
     @Override
-    public void actualizarEstado(Long id, SolicitudInput solo) {
-        SolicitudEliminacion solicitud = this.solicitudRepo.findById(Long.valueOf(id)).
-                orElseThrow(() -> new RuntimeException("Solicitud no encontrada"));
+    public SolicitudEliminacion actualizarEstado(Long id, SolicitudInput solo) {
+        SolicitudEliminacion solicitud = this.solicitudRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Solicitud no encontrada"));
 
         String estadoInput = solo.getEstado().toUpperCase();
         Hecho hecho = solicitud.getHecho();
@@ -28,14 +33,12 @@ public class SolicitudesService implements ISolicitudService {
         try {
             EnumEstadoSol nuevoEstado = EnumEstadoSol.valueOf(estadoInput);
             solicitud.setEstado(nuevoEstado);
-            this.hechoService.actualizarElEstadoDelHecho(hecho,nuevoEstado);
+            this.hechoService.actualizarElEstadoDelHecho(hecho, nuevoEstado);
         } catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("Estado inválido: " + solo.getEstado());
         }
 
         solicitudRepo.save(solicitud);
+        return solicitud;
     }
-
-
-
 }

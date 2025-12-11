@@ -36,4 +36,8 @@ public class SolicitudEliminacion {
         this.motivo = motivo;
         this.estado = EnumEstadoSol.PENDIENTE;
     }
+
+    public SolicitudEliminacion() {
+
+    }
 }

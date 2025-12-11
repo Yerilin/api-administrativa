@@ -1,5 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.controllers;
 
+import ar.utn.ba.ddsi.apiadmi.models.entities.admin.SolicitudEliminacion;
 import ar.utn.ba.ddsi.apiadmi.servicies.SolicitudesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +16,8 @@ public class SolicitudController {
 
 
     @PutMapping("/{id}")
-    public void actualizarEstado(@PathVariable Long id , @RequestBody SolicitudInput soli){
-
-        this.solicitudesService.actualizarEstado(id , soli);
-
-
+    public SolicitudEliminacion actualizarEstado(@PathVariable Long id, @RequestBody SolicitudInput soli){
+        return solicitudesService.actualizarEstado(id, soli);
     }
 
 }

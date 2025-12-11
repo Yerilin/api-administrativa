@@ -63,4 +63,8 @@ public class Hecho {
         this.fuente = fuente;
         this.estado = estado;
     }
+
+    public Hecho() {
+
+    }
 }
