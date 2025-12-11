@@ -8,4 +8,5 @@ public interface IFuenteServices {
     public Fuente buscarPorId(Long id);
     List<Fuente> obtenerFuentes();
 
+    Fuente buscarPorNombre(String nombre);
 }

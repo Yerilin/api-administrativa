@@ -27,6 +27,14 @@ public class FuenteServices implements IFuenteServices {
 
         return fuente;
     }
+    @Override
+    public Fuente buscarPorNombre(String nombre) {
+        Fuente fuente = this.repoFuentes.findByNombre(nombre);
+        if (fuente == null) {
+            throw new RuntimeException("Fuente no encontrada");
+        }
+        return fuente;
+    }
 
     @Override
     public List<Fuente> obtenerFuentes() {

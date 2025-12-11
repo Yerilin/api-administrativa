@@ -13,5 +13,4 @@ public class ApiadmiApplication {
 		System.out.println("Ejecuto api");
 
 	}
-
 }

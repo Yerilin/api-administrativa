@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -62,7 +63,11 @@ public class ColeccionesServices implements IColeccionService {
                 .map(c-> new CondicionDTO(c.getId_condicion(),c.tipo(),c.valor()))
                 .collect(Collectors.toList())
         );
-        coleout.setFuentes(cole.getFuentes());
+        List<Fuente> fuentesInput= new ArrayList<>();
+        cole.getFuentes().forEach(fuente -> {
+            fuentesInput.add(fuenteService.buscarPorNombre(fuente.getNombre()));
+        });
+        coleout.setFuentes(fuentesInput);
         coleout.setAlgoritmoDeConsenso(cole.getTipoDeAlgoritmo().toString());
         return coleout;
     }
@@ -92,7 +97,7 @@ public class ColeccionesServices implements IColeccionService {
     public void agregar(ColeccionInput coleccion) {
 
         List<Fuente> fuentes = coleccion.getFuentes().stream()
-                .map(a -> this.fuenteService.buscarPorId(a))
+                .map(a -> this.fuenteService.buscarPorNombre(a))
                 .collect(Collectors.toList());
 
         List<InterfaceCondicion> criterios = coleccion.getCriterios().stream()
@@ -127,7 +132,7 @@ public class ColeccionesServices implements IColeccionService {
             }
             // fuentes
             List<Fuente> nuevasFuentes = input.getFuentes().stream()
-                    .map(f -> fuenteService.buscarPorId(f))
+                    .map(f -> fuenteService.buscarPorNombre(f))
                     .collect(Collectors.toList());
             cole.setFuentes(nuevasFuentes);
 
@@ -207,7 +212,7 @@ public class ColeccionesServices implements IColeccionService {
                 return new CondicionFechaANTES(hasta);
 
             case "Categoria":
-                Categoria categoria= this.categoriaService.buscarPorId(valor);
+                Categoria categoria= this.categoriaService.buscarPorNombre(valor);
                 if(categoria!=null) return new CondicionCategoria(categoria);
             case "etiqueta":
                 Etiqueta etiqueta =this.etiquetaService.buscarPorId(valor);
