@@ -18,7 +18,7 @@ public class HechoServices implements IHechoService {
     public void actualizarElEstadoDelHecho(Hecho hecho, EnumEstadoSol estado) {
 
         if (estado == EnumEstadoSol.ACEPTADA) {
-            hecho.setEstado(EnumEstadoHecho.DADO_DE_BAJA);
+            hecho.setEstado(EnumEstadoHecho.BAJA);
             this.repo.save(hecho);
         }
     }
