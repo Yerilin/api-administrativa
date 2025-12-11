@@ -211,7 +211,7 @@ public class ColeccionesServices implements IColeccionService {
 
                 return new CondicionFechaANTES(hasta);
 
-            case "Categoria":
+            case "categoria":
                 Categoria categoria= this.categoriaService.buscarPorNombre(valor);
                 if(categoria!=null) return new CondicionCategoria(categoria);
             case "etiqueta":
