@@ -5,4 +5,5 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.admin.SolicitudEliminacion;
 
 public interface ISolicitudService {
     SolicitudEliminacion actualizarEstado(Long id, SolicitudInput solo);
+    void eliminarSolicitud(Long id);
 }

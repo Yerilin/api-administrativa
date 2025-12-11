@@ -41,4 +41,13 @@ public class SolicitudesService implements ISolicitudService {
         solicitudRepo.save(solicitud);
         return solicitud;
     }
+    @Override
+    public void eliminarSolicitud(Long id) {
+        SolicitudEliminacion solicitud = solicitudRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Solicitud no encontrada"));
+        if (solicitud.getEstado() != EnumEstadoSol.RECHAZADA) {
+            throw new IllegalStateException("Solo se pueden eliminar solicitudes rechazadas");
+        }
+        solicitudRepo.delete(solicitud);
+    }
 }
