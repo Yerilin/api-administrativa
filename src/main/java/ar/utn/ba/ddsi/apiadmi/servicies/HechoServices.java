@@ -18,6 +18,11 @@ public class HechoServices implements IHechoService {
     @Autowired
     private IEtiquetaRepository etiquetaRepo;
 
+    @Autowired
+    public HechoServices(IHechosRepository hechoRepo, IEtiquetaRepository etiquetaRepo) {
+        this.hechoRepo = hechoRepo;
+        this.etiquetaRepo = etiquetaRepo;
+    }
     @Override
     public void actualizarElEstadoDelHecho(Hecho hecho, EnumEstadoSol estado) {
 
