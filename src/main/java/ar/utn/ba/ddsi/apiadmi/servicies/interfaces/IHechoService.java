@@ -7,4 +7,6 @@ import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Hecho;
 public interface IHechoService {
 
     void actualizarElEstadoDelHecho(Hecho hecho, EnumEstadoSol estado);
+
+    void actualizarEtiqueta(Long id, String nombreEtiqueta);
 }

@@ -1,4 +1,4 @@
-package ar.utn.ba.ddsi.apiadmi.servicies.interfaces;
+package ar.utn.ba.ddsi.apiadmi.models.repository;
 
 import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
 import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Etiqueta;
@@ -10,4 +10,5 @@ import java.util.Optional;
 @Repository
 public interface IEtiquetaRepository  extends JpaRepository<Etiqueta,Long> {
     Optional<Categoria> findByNombre(String nombre);
+    Optional<Etiqueta> findByNombreIgnoreCase(String nombre);
 }
