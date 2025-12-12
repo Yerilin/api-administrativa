@@ -1,8 +1,6 @@
 package ar.utn.ba.ddsi.apiadmi.controllers;
 
-import ar.utn.ba.ddsi.apiadmi.models.dtos.ColeccionDto;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.CategoriaDTO;
-import ar.utn.ba.ddsi.apiadmi.models.entities.hecho.Categoria;
 import ar.utn.ba.ddsi.apiadmi.models.repository.ICategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,7 +14,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/categorias")
 @CrossOrigin(origins= "http://localhost:3000")
-public class CriteriosController {
+public class CategoriaController {
 
     @Autowired
     private ICategoriaRepository categoriaRepository;
