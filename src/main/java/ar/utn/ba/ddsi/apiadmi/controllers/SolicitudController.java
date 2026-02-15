@@ -9,10 +9,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
+
+@Slf4j
 @RestController
 @RequestMapping ("/solicitudes")
 @CrossOrigin(origins= "http://localhost:3000")
@@ -67,8 +71,10 @@ public class SolicitudController {
                             schema = @Schema(implementation = SolicitudInput.class)
                     )
             )
-            @RequestBody SolicitudInput soli){
-        return solicitudesService.actualizarEstado(id, soli);
+            @Valid @RequestBody SolicitudInput soli){
+        log.info("Actualizando estado de la solicitud con ID: {}", id);
+        SolicitudEliminacion solicitud =solicitudesService.actualizarEstado(id, soli);
+        return ResponseEntity.ok(solicitud).getBody();
     }
     @Operation(
             summary = "Eliminar una solicitud",
@@ -96,6 +102,7 @@ public class SolicitudController {
                     required = true
             )
             @PathVariable Long id) {
+        log.info("Eliminando solicitud con ID: {}", id);
         solicitudesService.eliminarSolicitud(id);
         return ResponseEntity.noContent().build();
     }

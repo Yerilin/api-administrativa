@@ -2,6 +2,7 @@ package ar.utn.ba.ddsi.apiadmi.controllers;
 
 import ar.utn.ba.ddsi.apiadmi.models.dtos.ColeccionDto;
 import ar.utn.ba.ddsi.apiadmi.models.dtos.input.ColeccionInput;
+import ar.utn.ba.ddsi.apiadmi.models.entities.coleccion.Coleccion;
 import ar.utn.ba.ddsi.apiadmi.servicies.ColeccionesServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -10,11 +11,16 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import lombok.NonNull;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping ("/colecciones")
 @CrossOrigin(origins= "http://localhost:3000")
@@ -51,7 +57,8 @@ public class CollecionController {
             )
     })
    @PostMapping
-    public void agregarColeccion(@RequestBody
+    //EL @Valid se encarga de validar el objeto ColeccionInput segun las anotaciones definidad en esa clase.
+    public ResponseEntity<Object> agregarColeccion(@NonNull @Valid @RequestBody
                                      @io.swagger.v3.oas.annotations.parameters.RequestBody(
                                              description = "Datos de la colección a crear",
                                              required = true,
@@ -62,10 +69,14 @@ public class CollecionController {
                                      )
                                      ColeccionInput coleccion){
 
-       //Poddria hacer mas validadciones en el futuro
-       if(coleccion!=null) {
-           this.coleccionService.agregar(coleccion);
-       }
+
+        coleccionService.agregar(coleccion);
+
+        log.info("Se agregó una nueva colección: {}", coleccion.getTitulo());
+
+        return ResponseEntity.status(201).build();
+
+
 
     }
 
@@ -88,9 +99,15 @@ public class CollecionController {
             )
     })
     @GetMapping
-    public List<ColeccionDto> obtenerColecciones(){
+    public ResponseEntity<Object> obtenerColecciones(){
 
-       return this.coleccionService.obtenerColecciones();
+        log.info("Obteniendo todas las colecciones");
+        List<ColeccionDto> colecciones = this.coleccionService.obtenerColecciones();
+
+        if(colecciones.isEmpty()){
+            log.info("No se encontraron colecciones");
+        }
+        return ResponseEntity.ok(colecciones);
 
     }
 
@@ -113,7 +130,7 @@ public class CollecionController {
             )
     })
     @PutMapping ("/{id}")
-    public void actualizarColeccion(
+    public ResponseEntity<Object> actualizarColeccion(
             @Parameter(
                     description = "ID de la colección a actualizar",
                     example = "1",
@@ -128,8 +145,11 @@ public class CollecionController {
                     )
             )
             @RequestBody ColeccionInput coleccionInput) {
-        //DEBERIA ESTAR DENTRO DE UN TRYCATCH
+
+        log.info("Actualizando colección con ID {}: {}", id, coleccionInput.getTitulo());
+
         this.coleccionService.actualizar(id,coleccionInput);
+        return ResponseEntity.noContent().build();
 
 
 
@@ -149,7 +169,7 @@ public class CollecionController {
             )
     })
     @DeleteMapping ("/{id}")
-    public void eliminarColeccion(
+    public ResponseEntity<Object> eliminarColeccion(
             @Parameter(
                     description = "ID de la colección a eliminar",
                     example = "1",
@@ -157,7 +177,9 @@ public class CollecionController {
             )
             @PathVariable Long id ){
 
+        log.info("Eliminando colección con ID {}", id);
         this.coleccionService.eliminar(id);
+        return ResponseEntity.ok().build();
     }
 
 

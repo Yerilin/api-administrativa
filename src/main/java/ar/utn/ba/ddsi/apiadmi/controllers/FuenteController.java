@@ -10,7 +10,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/fuentes")
 @CrossOrigin(origins= "http://localhost:3000")
@@ -51,7 +54,15 @@ public class FuenteController {
             )
     })
     @GetMapping
-    private List<Fuente> obtenerFuentes(){
-        return this.fuenteService.obtenerFuentes();
+    private ResponseEntity<List<Fuente>> obtenerFuentes(){
+
+
+        List<Fuente> fuentes = this.fuenteService.obtenerFuentes();
+        if (fuentes.isEmpty()) {
+            log.warn("No se encontraron etiquetas");
+        } else {
+            log.debug("Se encontraron {} etiquetas", fuentes.size());
+        }
+        return ResponseEntity.ok(fuentes);
     }
 }
