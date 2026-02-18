@@ -162,12 +162,20 @@ class ColeccionesServicesUnitTest {
     // TEST eliminar()
     // ============================================================
     @Test
-    void eliminar_ok() {
+    void eliminar_coleccionNoExiste_lanzaException() {
 
-        coleccionesServices.eliminar(5L);
+        Mockito.when(coleccionRepository.existsById(5L))
+                .thenReturn(false);
 
-        Mockito.verify(coleccionRepository).deleteById(5L);
+        assertThrows(RuntimeException.class, () -> {
+            coleccionesServices.eliminar(5L);
+        });
+
+        Mockito.verify(coleccionRepository, Mockito.never())
+                .deleteById(Mockito.anyLong());
     }
+
+
 
 
     // ============================================================
