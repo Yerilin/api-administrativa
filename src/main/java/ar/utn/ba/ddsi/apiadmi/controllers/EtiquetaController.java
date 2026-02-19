@@ -22,7 +22,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/etiquetas")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Etiquetas",
         description = "Endpoints para la gestión de etiquetas"
@@ -33,7 +33,7 @@ public class EtiquetaController {
     private EtiquetaService etiquetaService;
 
     @GetMapping
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "https://api-publica-2axc.onrender.com")
     @Operation(
             summary = "Obtener todas las etiquetas",
             description = "Devuelve un listado con todas las etiquetas disponibles en el sistema"

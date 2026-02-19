@@ -19,7 +19,7 @@ import ar.utn.ba.ddsi.apiadmi.models.dtos.input.SolicitudInput;
 @Slf4j
 @RestController
 @RequestMapping ("/solicitudes")
-@CrossOrigin(origins= "http://localhost:3000")
+@CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Solicitudes",
         description = "Endpoints para la gestión de solicitudes"

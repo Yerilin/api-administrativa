@@ -23,7 +23,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping ("/colecciones")
-@CrossOrigin(origins= "http://localhost:3000")
+@CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Colecciones",
         description = "Endpoints para la gestión de colecciones"

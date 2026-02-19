@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @RequestMapping("/hechos")
-@CrossOrigin(origins= "http://localhost:3000")
+@CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Hechos",
         description = "Endpoints para la gestión de hechos"
@@ -25,7 +25,7 @@ public class HechosController {
     private HechoServices hechoService;
 
     @PutMapping("/{id}/etiqueta")
-    @CrossOrigin(origins= "http://localhost:3000")
+    @CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
     @Operation(
             summary = "Asignar etiqueta a un hecho",
             description = "Asigna o actualiza la etiqueta asociada a un hecho existente"

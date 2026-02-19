@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RestController
 @RequestMapping("/categorias")
-@CrossOrigin(origins= "http://localhost:3000")
+@CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Categorías",
         description = "Endpoints para la gestión de categorías"
