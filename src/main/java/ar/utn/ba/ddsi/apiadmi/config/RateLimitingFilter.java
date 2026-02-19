@@ -36,6 +36,12 @@ public class RateLimitingFilter extends OncePerRequestFilter {
             HttpServletResponse response,
             FilterChain filterChain
     ) throws ServletException, IOException {
+        // dejar pasar las peticiones preflight (OPTIONS) sin aplicar rate limiting, para q no interfiera con CORS
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         String clientIp = getClientIp(request);
 
         // verificar si ip esta bloqueada temporalmente
