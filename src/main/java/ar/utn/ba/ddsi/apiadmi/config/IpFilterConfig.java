@@ -31,6 +31,12 @@ public class IpFilterConfig extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
 
+        // deja pasar las peticiones prefligtth (OPTIONS) sin aplicar filtro de ip (para q no interfiera con CORS)
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            filterChain.doFilter(request, response);
+            return;
+        }
+
         // si el filtro no está habilitado, continuar normalmente
         if (!filterEnabled) {
             filterChain.doFilter(request, response);

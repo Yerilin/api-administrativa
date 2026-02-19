@@ -14,8 +14,7 @@ import java.util.Arrays;
 public class CorsConfig {
 
     @Bean
-    public FilterRegistrationBean<CorsFilter> customCorsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+    public FilterRegistrationBean<CorsFilter> corsFilterRegistration() {
         CorsConfiguration config = new CorsConfiguration();
 
         // 1. Permitir credenciales
@@ -24,14 +23,19 @@ public class CorsConfig {
         // 2. Orígenes permitidos (Tu frontend en producción y local)
         config.setAllowedOrigins(Arrays.asList(
                 "https://front-metamapa-lo3l.vercel.app",
-                "http://localhost:3000"
+                "https://api-publica-2axc.onrender.com",
+                "http://localhost:3000",
+                "http://localhost:5173",
+                "https://api-publica-rnpq.onrender.com"
         ));
 
         // 3. Cabeceras y métodos permitidos (OPTIONS es obligatorio)
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+        config.setAllowCredentials(true);
 
         // 4. Aplicar a toda la API
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
 
         // 5. REGISTRAR EL FILTRO CON MÁXIMA PRIORIDAD
@@ -43,3 +47,4 @@ public class CorsConfig {
         return bean;
     }
 }
+

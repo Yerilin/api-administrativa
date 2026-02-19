@@ -40,12 +40,12 @@ public class ServicioDeMonitoreoDeDependencias {
         }
     }
 
-    @Scheduled(fixedDelay = 15000)
+    @Scheduled(fixedDelay = 15000) // Cada 15 segundos
     public void heartbeat() {
         try {
             boolean databaseOk = database.estaDisponible();
 
-            log.debug("Estado dependencias - database: {}, dinamica: {}, estatica: {}, proxy: {}",
+            log.debug("Estado dependencias - database: {}",
                     databaseOk);
 
             if (!databaseOk) {
