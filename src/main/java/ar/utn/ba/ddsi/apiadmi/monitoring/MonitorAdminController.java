@@ -1,6 +1,7 @@
 package ar.utn.ba.ddsi.apiadmi.monitoring;
 
 import ar.utn.ba.ddsi.apiadmi.monitoring.healthindicators.DatabaseHealthIndicator;
+import org.springframework.boot.actuate.health.Health;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ public class MonitorAdminController {
 
     @PostMapping("/fail/database")
     public void failDatabase() {
-        database.markDown();
+        database.forceDown();
     }
 
 
@@ -30,6 +31,6 @@ public class MonitorAdminController {
 
     @PostMapping("/recover/all")
     public void recoverAll() {
-        database.markUp();
+        database.recover();
     }
 }

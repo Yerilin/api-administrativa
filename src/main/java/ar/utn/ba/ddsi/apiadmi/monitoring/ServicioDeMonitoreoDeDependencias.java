@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class ServicioDeMonitoreoDeDependencias {
     //Contadores y Maximos para alertas
     private int fallasCriticos = 0;
+    private boolean forzarFallasCriticas = false;
 
     @Value("${monitoreo.max-fallos:3}")
     private int MAX_FALLOS;
@@ -40,17 +41,18 @@ public class ServicioDeMonitoreoDeDependencias {
         }
     }
 
-    @Scheduled(fixedDelay = 15000)
+    @Scheduled(fixedDelay = 15000) // Ejecutar cada 15 segundos (ajustable según necesidades)
     public void heartbeat() {
         try {
             boolean databaseOk = database.estaDisponible();
 
-            log.debug("Estado dependencias - database: {}, dinamica: {}, estatica: {}, proxy: {}",
+            log.debug("Estado dependencias - database: {}",
                     databaseOk);
 
-            if (!databaseOk) {
+            if (!databaseOk || this.forzarFallasCriticas) {
                 log.error("Dependencia crítica 'database' DOWN -> marcando y manejando");
                 database.markDown();
+                this.forzarFallasCriticas= false;
             } else {
                 database.markUp();
             }
