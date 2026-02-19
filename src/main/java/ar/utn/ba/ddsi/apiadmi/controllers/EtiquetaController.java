@@ -22,7 +22,6 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/etiquetas")
-@CrossOrigin(origins = "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Etiquetas",
         description = "Endpoints para la gestión de etiquetas"
