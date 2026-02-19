@@ -11,7 +11,7 @@ public abstract class AbstractDependencyHealthIndicator implements HealthIndicat
     @Override
     public Health health() {
         if (forceDown) {
-            log.warn("Forzando estado DOWN para '{}'", dependencyName());
+            log.warn("Estado DOWN forzado por un ADMIN para '{}'", dependencyName());
             return markDown();
         }
         try {
