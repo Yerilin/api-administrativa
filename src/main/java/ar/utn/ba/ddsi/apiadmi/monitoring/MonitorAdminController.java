@@ -25,7 +25,7 @@ public class MonitorAdminController {
     @PostMapping("/fail/database")
     public void failDatabase() {
         log.info("Simulando falla en la base de datos");
-        database.markDown();
+        database.forceDown();
     }
 
 
@@ -34,6 +34,6 @@ public class MonitorAdminController {
     @PostMapping("/recover/all")
     public void recoverAll() {
         log.info("Simulando recuperación de todas las dependencias");
-        database.markUp();
+        database.recover();
     }
 }
