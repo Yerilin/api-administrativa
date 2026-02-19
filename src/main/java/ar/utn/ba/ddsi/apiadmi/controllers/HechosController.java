@@ -25,7 +25,6 @@ public class HechosController {
     private HechoServices hechoService;
 
     @PutMapping("/{id}/etiqueta")
-    @CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
     @Operation(
             summary = "Asignar etiqueta a un hecho",
             description = "Asigna o actualiza la etiqueta asociada a un hecho existente"

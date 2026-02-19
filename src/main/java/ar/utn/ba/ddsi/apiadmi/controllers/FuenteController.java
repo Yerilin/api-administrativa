@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +22,6 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/fuentes")
-@CrossOrigin(origins= "https://api-publica-2axc.onrender.com")
 @Tag(
         name = "Fuentes",
         description = "Endpoints para la gestión de fuentes"
