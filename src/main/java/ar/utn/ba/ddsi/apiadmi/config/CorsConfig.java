@@ -1,4 +1,4 @@
-package ar.utn.ba.ddsi.apiadmi.config;
+package ar.utn.ba.ddsi.apiadmi.Config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -26,7 +26,9 @@ public class CorsConfig {
                 "https://api-publica-2axc.onrender.com",
                 "http://localhost:3000",
                 "http://localhost:5173",
-                "https://api-publica-rnpq.onrender.com"
+                "https://api-publica-rnpq.onrender.com",
+                //El unico que funciona no quise sacar los demás para que no rompa.
+                "https://front-metamapa-dun.vercel.app"
         ));
 
         // 3. Cabeceras y métodos permitidos (OPTIONS es obligatorio)
